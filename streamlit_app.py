@@ -39,9 +39,9 @@ def main():
     st.title('Car Selling Price Prediction')
 
     st.write('Enter the details of the car to predict its selling price:')
-    car_name = st.text_input('Car Name')
+    #car_name = st.text_input('Car Name')
     year = st.number_input('Year', min_value=1950, max_value=2024, step=1)
-    selling_price = st.number_input('Selling Price')
+    #selling_price = st.number_input('Selling Price')
     present_price = st.number_input('Present Price')
     kms_driven = st.number_input('Kilometers Driven')
     fuel_type = st.selectbox('Fuel Type', ['Petrol', 'Diesel', 'CNG'])
@@ -49,9 +49,7 @@ def main():
     transmission = st.selectbox('Transmission', ['Manual', 'Automatic'])
     owner = st.number_input('Owner')
 
-    car_data = pd.DataFrame({'Car_Name': [car_name],
-                             'Year': [year],
-                             'Selling_Price': [selling_price],
+    car_data = pd.DataFrame({'Year': [year],
                              'Present_Price': [present_price],
                              'Kms_Driven': [kms_driven],
                              'Fuel_Type': [fuel_type],
