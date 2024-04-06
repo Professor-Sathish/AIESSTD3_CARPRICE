@@ -1,12 +1,8 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import xgboost as xgb
-import pickle
-
-# Load the XGBoost model
-with open('xgb_model.bin', 'rb') as f:
-    xgb_model = pickle.load(f)
+from xgboost import XGBRegressor
+import joblib
 
 # Function to preprocess input data
 def preprocess_input(car_data):
@@ -25,7 +21,7 @@ def preprocess_input(car_data):
 # Function to predict selling price
 def predict_selling_price(car_data):
     car_data = preprocess_input(car_data)
-    prediction = xgb_model.predict(xgb.DMatrix(car_data))
+    prediction = model.predict(car_data)
     return prediction[0]
 
 # Streamlit UI
@@ -52,10 +48,11 @@ def main():
                              'Seller_Type': [seller_type],
                              'Transmission': [transmission],
                              'Owner': [owner]})
-
+    
     if st.button('Predict'):
         selling_price_prediction = predict_selling_price(car_data)
         st.write(f'Predicted Selling Price: {selling_price_prediction:.2f} Lakhs')
 
 if __name__ == '__main__':
+    model = joblib.load('car_price_predictor')
     main()
