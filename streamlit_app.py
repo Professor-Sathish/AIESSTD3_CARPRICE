@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-from xgboost import XGBRegressor
+from xgboost import XGBRegressor as xgb
 import joblib
 
 # Function to preprocess input data
