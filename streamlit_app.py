@@ -29,8 +29,10 @@ def preprocess_input(car_data):
 # Function to predict selling price
 def predict_selling_price(car_data):
     car_data = preprocess_input(car_data)
-    prediction = model.predict(car_data)
+    dmatrix = xgb.DMatrix(car_data)
+    prediction = model.predict(dmatrix)
     return prediction[0]
+
 
 # Streamlit UI
 def main():
