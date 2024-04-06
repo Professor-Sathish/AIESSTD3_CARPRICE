@@ -3,7 +3,7 @@ from joblib import load
 import pandas as pd
 
 # Load the XGBoost model
-xgboost_model = load('xgboost_model.joblib')
+xgboost_model = load('car_price_predictor')
 
 # Define a function to preprocess input data
 def preprocess_input(data):
