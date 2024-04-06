@@ -15,12 +15,16 @@ def preprocess_input(car_data):
     car_data['Transmission'] = car_data['Transmission'].map(transmission_mapping)
 
     car_data['Age'] = 2024 - car_data['Year']
-    car_data.drop(['Car_Name', 'Year'], axis=1, inplace=True)
+    car_data.drop(['Year'], axis=1, inplace=True)
 
-    # Reorder columns to match the training data
+    # Ensure correct column order
     car_data = car_data[['Present_Price', 'Kms_Driven', 'Fuel_Type', 'Seller_Type', 'Transmission', 'Owner', 'Age']]
+    
+    # Ensure all columns are float type
+    car_data = car_data.astype(float)
 
     return car_data
+
 
 # Function to predict selling price
 def predict_selling_price(car_data):
