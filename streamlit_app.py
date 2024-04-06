@@ -16,6 +16,10 @@ def preprocess_input(car_data):
 
     car_data['Age'] = 2024 - car_data['Year']
     car_data.drop(['Car_Name', 'Year'], axis=1, inplace=True)
+
+    # Reorder columns to match the training data
+    car_data = car_data[['Present_Price', 'Kms_Driven', 'Fuel_Type', 'Seller_Type', 'Transmission', 'Owner', 'Age']]
+
     return car_data
 
 # Function to predict selling price
